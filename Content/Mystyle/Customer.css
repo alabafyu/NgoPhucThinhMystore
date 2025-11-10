@@ -1,0 +1,156 @@
+﻿
+.banner {
+    background-image: url(".../images/banner.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.banner-container {
+    text-align: center;
+    color: white;
+}
+
+    .banner-container h2 {
+        font-size: 2rem;
+    }
+
+    .banner-container p {
+        font-size: 20px;
+    }
+
+.btn-banner {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkorange;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style cho phần SEARCH */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: brown;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+    cursor: pointer;
+}
+    .search-button:hover {
+        background-color: #555;
+    }
+
+.searchProd {
+    padding: 20px 0;
+    text-align: center;
+}
+
+#searchProd h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: brown;
+}
+
+/* STYLE CỦA FEATURE PRODUCT */
+.featureProd {
+    padding: 20px;
+    text-align: center;
+}
+
+.feature-container {
+    /* justify-content: center; */
+    display: flex;
+    overflow-x: auto; /* cho phép cuộn ngang */
+    scroll-snap-type: x mandatory;
+}
+
+.fproduct-item { /* chỉ định độ rộng slider */
+    width: 300px; /* điều chỉnh độ rộng màn hình */
+    max-height: 400px;
+    margin: 10px;
+    padding: 20px; /* khoảng cách giữa item */
+    border: 1px groove #DDDDDD;
+    border-radius: 10px;
+    flex: 0 0 auto; /* nếu các phần không có gỉa trị */
+    scroll-snap-align: start; /* các sản phẩm lướt lại ở đầu của cuộn */
+}
+
+    .fproduct-item img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: central;
+        background-color: transparent;
+    }
+
+/* STYLE CỦA LIST PRODUCT */
+.listProduct {
+    text-align: left;
+}
+.list-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.lproduct-item {
+    max-height: 500px;
+    border: 1px groove #DDDDDD;
+    border-radius: 10px;
+}
+
+    .lproduct-item img {
+        padding: 5px; /* điều chỉnh theo độ rộng màn hình */
+        background-color: transparent;
+    }
+
+/* các thuộc tính chung của FEATURE và NEW sản phẩm */
+.featureProd h2, .listProduct h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: brown;
+    text-align: center;
+}
+
+.fproPrice {
+    font-size: large;
+    color: blue;
+    font-weight: bolder;
+    padding: 0px 0px 5px 0px;
+}
+
+.fproName {
+    color: black;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+}
+
+.fproCate {
+    color: black;
+    padding: 5px 0px 5px 0px;
+}
+
+.fproDetail {
+    font-size: small;
+    color: dimgrey;
+    padding: 5px 0px 0px 0px;
+}

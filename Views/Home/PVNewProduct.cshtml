@@ -1,0 +1,67 @@
+﻿@model NgoPhucThinhMystore.Models.ViewModel.HomeProductVM
+@using PagedList.Mvc
+@using PagedList
+
+<link rel="stylesheet" type="text/css" href="~/Content/MyStyle/CustomerHome.css" />
+
+@if (Model.NewProducts != null && Model.NewProducts.Any())
+{
+    <section class="container-fluid listProduct">
+        <h2>Sản phẩm mới</h2>
+        <ul class="list-container">
+            @foreach (var product in Model.NewProducts)
+            {
+                <li class="lproduct-item">
+                    <div>
+                        {{-- Liên kết đến trang chi tiết sản phẩm --}}
+                        <a href="@Url.Action("ProductDetail", "Home", new { id = product.ProductID })">
+                            {{-- Sử dụng @product.ProductImage nếu không cần template DisplayFor --}}
+                            <img src="@product.ProductImage" alt="@product.ProductName" />
+                        </a>
+                    </div>
+
+                    {{-- Giá sản phẩm (Rút gọn) --}}
+                    <p class="prodPrice">
+                        @product.ProductPrice
+                    </p>
+
+                    {{-- Tên sản phẩm (Rút gọn) --}}
+                    <p class="prodName">
+                        @product.ProductName
+                    </p>
+
+                    {{-- Số lượng đã bán (Rút gọn) --}}
+                    <p class="prodSale">
+                        Đã bán: &nbsp; @product.OrderDetails.Count
+                    </p>
+                </li>
+            }
+        </ul>
+        <section class="productlist">
+            <h2>Danh sách sản phẩm</h2>
+            <ul class="list-container">
+
+                {{-- Sản phẩm 1 (Lặp lại) --}}
+                <li class="product-item">
+                    <img src="~/Content/images/acer_nitro_5_tiger.png" alt="Acer Nitro 5 Tiger" />
+                    <h3>Acer Nitro 5 Tiger</h3>
+                    <p class="prodDescription">Mỏng nhẹ, giá sinh viên</p>
+                    <p class="prodPrice">9.999.999₫</p>
+                </li>
+
+            </ul>
+        </section>
+    </section>
+
+    <div class="pagination-container">
+        @Html.PagedListPager(
+            (IPagedList)Model.NewProducts, // Ép kiểu nếu cần
+            page => Url.Action("Index", "Home", new { page, searchTerm = Model.SearchTerm }),
+            PagedListRenderOptions.Classic // Có thể tùy chỉnh kiểu phân trang
+        )
+    </div>
+}
+else
+{
+    <p>Không tìm được sản phẩm nào phù hợp.</p>
+}

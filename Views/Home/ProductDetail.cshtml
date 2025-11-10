@@ -1,0 +1,93 @@
+﻿
+
+
+
+@model NgoPhucThinhMystore.Models.ViewModel.ProductDetailVM
+
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .pro-section {
+            padding: 50px 10px 10px;
+            background-color: ghostwhite;
+        }
+
+        .pro-section {
+            background-color: white;
+            border: 1px groove #ffffff;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 10px;
+        }
+
+            .pro-section img {
+                max-height: 250px;
+                max-width: 200px;
+                padding: 5px;
+            }
+
+        .pro-price {
+            font-weight: bolder;
+            font-size: larger;
+            color: red;
+        }
+
+        .pro-sale {
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<div class="container-fluid pro-section">
+    <div class="row">
+        <div class="col-md-5 pro-section">
+            <h2>Ảnh sản phẩm</h2>
+            <img src="@Model.product.ProductImage" />
+        </div>
+
+        <div class="col-md-4 pro-section">
+            <h3>Phần thông tin sản phẩm</h3>
+            <div>
+                <h5>@Model.product.ProductName</h5>
+                <h5 class="pro-sale">Giá bán: @Model.product.ProductPrice.ToString("C")</h5>
+                <p>Tên sách: @Model.product.Category.CategoryName</p>
+                <p>Tác giả: @Model.product.Author</p>
+                <p>Tóm tắt: @Model.product.ProductDecription</p>
+                <hr />
+            </div>
+
+            <h6>@Html.Partial("_PVRelatedProduct", Model)</h6>
+        </div>
+
+        <div class="col-md-3 pro-section">
+            <div class="pro-form-group">
+                <p>Phần tạm tính</p>
+                @using (Html.BeginForm("ProductDetails", "Home", FormMethod.Get))
+                {
+                    <strong>Số Lượng:</strong>
+                    @Html.TextBoxFor(m => m.quantity, new
+                    {
+                        @class = "form-control",
+                        @type = "number",
+                        @min = 1
+                    })
+                }
+
+                <strong>Tạm Tính:</strong>
+                @Model.estimatedValue.ToString("N0")
+            </div>
+
+            @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "Cart",
+                new { @class = "btn btn-info" },
+                new { ProductID = Model.product.ProductID, quantity = Model.quantity }
+            )
+
+            <hr />
+
+            <h6>@Html.Partial("PVTopProduct", Model)</h6>
+        </div>
+    </div>
+</div>

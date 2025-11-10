@@ -1,0 +1,21 @@
+﻿
+@model NgoPhucThinhMystore.Models.Category
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="control label col-md-2">Tên danh Mục</div>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <hr/>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+        @Html.ActionLink("Quay lại Danh sách", "Index", null, new { @class = "btn btn-primary " })
+    </div>
+
+</div>  
