@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/CustomerHome.css" />
 
+
+<!-- Hiển thị danh sách sản phẩm nổi bật -->
 @if (Model.FeaturedProducts != null && Model.FeaturedProducts.Any())
 {
     <section class="container-fluid featureProd">
@@ -9,61 +11,28 @@
         <div class="feature-container">
             @foreach (var product in Model.FeaturedProducts)
             {
-                <div class="fproduct-item">
+                <div class="product-item">
                     <div>
-                        {{-- Liên kết đến trang chi tiết sản phẩm --}}
-                        <a href="@Url.Action("ProductDetail", "Home", new { id = product.ProductID })">
+                        <a href="@Url.Action("ProductDetails", "Home", new { id = product.ProductID })">
                             <img src="@Html.DisplayFor(modelItem => product.ProductImage)" />
                         </a>
                     </div>
 
-                    {{-- Giá sản phẩm --}}
                     <p class="prodPrice">
                         @Html.DisplayFor(modelItem => product.ProductPrice)
                     </p>
-
-                    {{-- Tên sản phẩm --}}
                     <p class="prodName">
                         @Html.DisplayFor(modelItem => product.ProductName)
                     </p>
-
-                    {{-- Danh mục sản phẩm --}}
                     <p class="prodCate">
                         @Html.DisplayFor(modelItem => product.Category.CategoryName)
                     </p>
-
-                    {{-- Số lượng đã bán --}}
                     <p class="prodSale">
-                        Đã bán: &nbsp; @Html.DisplayFor(modelItem => product.OrderDetails.Count)
+                        Đã bán:&nbsp; @Html.DisplayFor(modelItem => product.OrderDetails.Count)
                     </p>
                 </div>
             }
         </div>
-        <section id="featureprod">
-            <h2>Sản phẩm nổi bật</h2>
-            <div class="prod-container">
-                <div class="product-item">
-                    <img src="~/Content/images/acer_nitro_5_tiger.png" />
-                    <h3>Acer Nitro 5 Tiger</h3>
-                    <p class="prodDescription">Mỏng nhẹ, giá sinh viên</p>
-                    <p class="prodPrice">9.999.999đ</p>
-                </div>
-
-                <div class="product-item">
-                    <img src="~/Content/images/hp-14s-dq-bac-dd.jpg" />
-                    <h3>HP 14s DQ màu bạc</h3>
-                    <p class="prodDescription">Cấu hình mạnh, phù hợp game thủ</p>
-                    <p class="prodPrice">9.899.999đ</p>
-                </div>
-
-                <div class="product-item">
-                    <img src="~/Content/images/X1504ZA-NJ517W.jpg" />
-                    <h3>Thinkpad X1504ZA</h3>
-                    <p class="prodDescription">Phong cách doanh nhân</p>
-                    <p class="prodPrice">29.999.999đ</p>
-                </div>
-            </div>
-        </section>
     </section>
     <hr />
 }

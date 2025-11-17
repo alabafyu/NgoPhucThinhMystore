@@ -11,7 +11,7 @@ namespace NgoPhucThinhMystore.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
     public partial class OrderDetail
     {
         public int ID { get; set; }
@@ -19,7 +19,12 @@ namespace NgoPhucThinhMystore.Models
         public int OrderID { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
-    
+        public string TotalPrice { get; set; }
+        public int OrderTotal { get; set; }
+        public int ProductImageName { get; set; }
+        public int PaymentMethod { get; set; }
+        public int ShippingMethod { get; set; }
+        public int ShippingAddress { get; set; }    
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
     }

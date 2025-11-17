@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.OrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="6.25" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Pro_Category" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__Order__CustomerI__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_User_Customer" ManuallyRouted="false" />

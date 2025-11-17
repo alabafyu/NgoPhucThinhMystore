@@ -11,7 +11,7 @@ namespace NgoPhucThinhMystore.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +19,16 @@ namespace NgoPhucThinhMystore.Models
         {
             this.OrderDetails = new HashSet<OrderDetail>();
         }
-    
+        public string Author { get; set; }
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public string ProductName { get; set; }
         public string ProductDecription { get; set; }
         public decimal ProductPrice { get; set; }
         public string ProductImage { get; set; }
-        public string Author { get; set; } = string.Empty;
-        public string Description { get; set; }
-     
+        public int ProductImageName { get; set; }
+
+
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

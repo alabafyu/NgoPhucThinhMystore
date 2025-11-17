@@ -28,7 +28,7 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
             {
                 model.SearchTerm = searchTerm;
                 products = products.Where(p => p.ProductName.Contains(searchTerm) ||
-                                              p.Description.Contains(searchTerm) ||
+                                              p.ProductDecription.Contains(searchTerm) ||
                                               p.Category.CategoryName.Contains(searchTerm));
             }
 
@@ -70,7 +70,7 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
             int pageSize = model.PageSize; // Số sản phẩm mỗi trang
 
             model.product = pro;
-            model.RelatedProducts = Product.OrderBy(p => p.ProductID).Take(8).ToPagedList(pageNumber, pageSize);
+            model.RelatedProducts = products.OrderBy(p => p.ProductID).Take(8).ToPagedList(pageNumber, pageSize);
             model.TopProducts = products.OrderByDescending(p => p.OrderDetails.Count()).Take(8).ToPagedList(pageNumber, pageSize);
 
             if (quantity.HasValue)

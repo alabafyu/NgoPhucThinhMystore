@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
+            @*@Html.DisplayFor(modelItem => item.CategoryName)*@
         </td>
         <td>
             @Html.ActionLink("Cập nhật", "Edit", new { id=item.CategoryID },  new { @class = "btn btn-primary btn-sm" }) 

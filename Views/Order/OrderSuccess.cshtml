@@ -1,10 +1,14 @@
-﻿@model NgoPhucThinhMystore.Models.Order
+﻿
+@model NgoPhucThinhMystore.Models.Order
+
 @{
     ViewBag.Title = "OrderSuccess";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>XÁC NHẬN ĐƠN HÀNG</h2>
+
+@* Phần Thông tin chung của Đơn hàng *@
 <h3>Thông tin đơn hàng</h3>
 <div>
     <p><strong>Mã đơn hàng:</strong> @Model.OrderID</p>
@@ -16,6 +20,7 @@
     <p><strong>Địa chỉ giao hàng:</strong> @Model.ShippingAddress</p>
 </div>
 
+@* Phần Chi tiết các Sản phẩm đã mua *@
 <h3>Chi tiết đơn hàng</h3>
 <table class="table">
     <thead>
@@ -38,4 +43,3 @@
         }
     </tbody>
 </table>
-

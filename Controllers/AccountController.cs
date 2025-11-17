@@ -4,18 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Runtime.Remoting.Messaging;
 using NgoPhucThinhMystore.Models;
 using NgoPhucThinhMystore.Models.ViewModel;
 
-namespace NgoPhucThinhMystore.Areas.Admin.Controllers
+
+namespace _24DH113423_MyStore.Controllers
 {
-    public class AccounttController : Controller
+    public class AccountController : Controller
     {
-        // GET: Admin/Accountt
-        public ActionResult Index()
-        {
-            return View();
-        }
         private MystoreEntities db = new MystoreEntities();
 
         // GET: Account/Register
@@ -31,15 +28,14 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Kiểm tra xem tên đăng nhập đã tồn tại chưa
+                //kiểm tra xem tên đăng nhập đã tồn tại chưa
                 var existingUser = db.Users.SingleOrDefault(u => u.Username == model.Username);
                 if (existingUser != null)
                 {
                     ModelState.AddModelError("Username", "Tên đăng nhập này đã tồn tại!");
                     return View(model);
                 }
-
-                // Nếu chưa tồn tại thì tạo bản ghi thông tin tài khoản trong bảng User
+                //nếu chưa tồn tại thì tạo bản ghi thông tin tài khoản trong bảng User
                 var user = new User
                 {
                     Username = model.Username,
@@ -47,8 +43,7 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
                     UserRole = "Customer"
                 };
                 db.Users.Add(user);
-
-                // và tạo bản ghi thông tin khách hàng trong bảng Customer
+                //và tạo bản ghi thông tin khách hàng trong bảng Customer
                 var customer = new Customer
                 {
                     CustomerName = model.CustomerName,
@@ -58,14 +53,12 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
                     Username = model.Username,
                 };
                 db.Customers.Add(customer);
-
-                // Lưu thông tin tài khoản và thông tin khách hàng vào CSDL
+                //Lưu thông tin tài khoản và thông tin khách hàng vào CSDL
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
-        // GET: Account/Login
         public ActionResult Login()
         {
             return View();
@@ -79,8 +72,9 @@ namespace NgoPhucThinhMystore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Users.SingleOrDefault(u => u.Username == model.Username
-                                                        && u.Password == model.Password
-                                                        && u.UserRole == "Customer");
+                                                      && u.Password == model.Password
+                                                      && u.UserRole == "Customer");
+
                 if (user != null)
                 {
                     // Lưu trạng thái đăng nhập vào session
