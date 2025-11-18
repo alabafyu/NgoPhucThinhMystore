@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/CustomerHome.css" />
 }
 
-/* PHẦN BANNER */
+@*/* PHẦN BANNER */*@
 <section class="container-fluid banner">
     <div class="banner-container">
         <h2>Chào mừng đến trang web E-commerce</h2>
@@ -14,7 +14,7 @@
     </div>
 </section>
 
-/* PHẦN TÌM KIẾM SẢN PHẨM */
+@*/* PHẦN TÌM KIẾM SẢN PHẨM */*@
 <section class="container-fluid searchProd">
     <h2>Tìm kiếm sản phẩm</h2>
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
@@ -32,8 +32,8 @@
 </section>
 <hr />
 
-/* PHẦN SẢN PHẨM NỔI BẬT */
+@*/* PHẦN SẢN PHẨM NỔI BẬT */*@
 @Html.Partial("PVFeatureProduct", Model)
 
-/* PHẦN SẢN PHẨM MỚI */
+@*/* PHẦN SẢN PHẨM MỚI */*@
 @Html.Partial("PVNewProduct", Model)

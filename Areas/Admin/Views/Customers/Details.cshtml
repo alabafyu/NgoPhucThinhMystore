@@ -1,0 +1,60 @@
+﻿@model NgoPhucThinhMystore.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
+}
+
+<div class="card shadow-sm">
+
+    <div class="card-header">
+        <h5 class="mb-0">@ViewBag.Title: @Html.DisplayFor(model => model.CustomerName)</h5>
+    </div>
+
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerName)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerPhone)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerPhone)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerEmail)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerAddress)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.Username)</p>
+            </dd>
+        </dl>
+
+    </div>
+
+    <div class="card-footer bg-light">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    </div>
+</div>

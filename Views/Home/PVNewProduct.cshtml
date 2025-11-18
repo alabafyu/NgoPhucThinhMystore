@@ -14,24 +14,23 @@
             {
                 <li class="lproduct-item">
                     <div>
-                        {{-- Liên kết đến trang chi tiết sản phẩm --}}
+
                         <a href="@Url.Action("ProductDetail", "Home", new { id = product.ProductID })">
-                            {{-- Sử dụng @product.ProductImage nếu không cần template DisplayFor --}}
+                           @product.ProductImage nếu không cần template DisplayFor 
                             <img src="@product.ProductImage" alt="@product.ProductName" />
                         </a>
                     </div>
 
-                    {{-- Giá sản phẩm (Rút gọn) --}}
+                    
                     <p class="prodPrice">
                         @product.ProductPrice
                     </p>
 
-                    {{-- Tên sản phẩm (Rút gọn) --}}
                     <p class="prodName">
                         @product.ProductName
                     </p>
 
-                    {{-- Số lượng đã bán (Rút gọn) --}}
+                
                     <p class="prodSale">
                         Đã bán: &nbsp; @product.OrderDetails.Count
                     </p>
@@ -42,7 +41,7 @@
             <h2>Danh sách sản phẩm</h2>
             <ul class="list-container">
 
-                {{-- Sản phẩm 1 (Lặp lại) --}}
+               
                 <li class="product-item">
                     <img src="~/Content/images/acer_nitro_5_tiger.png" alt="Acer Nitro 5 Tiger" />
                     <h3>Acer Nitro 5 Tiger</h3>

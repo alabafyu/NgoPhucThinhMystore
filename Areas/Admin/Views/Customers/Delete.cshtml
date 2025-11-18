@@ -1,0 +1,66 @@
+﻿@model NgoPhucThinhMystore.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
+}
+
+<div class="card shadow-sm border-danger">
+
+    <div class="card-header">
+        <h4 class="mb-0">@ViewBag.Title: @Html.DisplayFor(model => model.CustomerName)</h4>
+    </div>
+
+    <div class="card-body">
+
+        <div class="alert alert-danger" role="alert">
+            <strong>Cảnh báo!</strong> Bạn có chắc chắn muốn xóa vĩnh viễn khách hàng này không?
+            <br>
+            Hành động này không thể hoàn tác.
+        </div>
+
+        <h5>Thông tin khách hàng sắp xóa:</h5>
+
+        <dl class="row">
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerName)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerPhone)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerPhone)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerEmail)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.CustomerAddress)</p>
+            </dd>
+
+        </dl>
+
+    </div> <div class="card-footer bg-light">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" value="Xác nhận Xóa" class="btn btn-danger" />
+
+            @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-secondary ms-2" })
+        }
+    </div>
+</div>

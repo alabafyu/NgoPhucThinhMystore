@@ -1,0 +1,100 @@
+﻿@model IEnumerable<NgoPhucThinhMystore.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
+}
+<p class="mb-4">
+    @Html.ActionLink(" Thêm tài khoản mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>
+                        <th class="text-end" style="width: 200px;">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+
+                            <td class="password-cell">
+                                <div>
+                                    <span class="password-hidden" style="font-family: monospace; letter-spacing: 2px;">●●●●●●●●</span>
+                                    <span class="password-real" style="display: none;">
+                                        @Html.DisplayFor(modelItem => item.Password)
+                                    </span>
+                                </div>
+
+                                <button type="button" class="btn btn-sm btn-outline-secondary ms-2 btn-toggle-password" title="Hiện/Ẩn mật khẩu">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </td>
+
+                            <td class="text-end">
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.Username }, new { @class = "btn btn-sm btn-warning" })
+
+                                @Html.ActionLink("Xóa", "Delete", new { id = item.Username }, new { @class = "btn btn-sm btn-danger ms-1" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        /* 2. Thêm 3 dòng CSS để cố định "con mắt" */
+        .password-cell {
+            display: flex; /* Biến ô thành flexbox */
+            justify-content: space-between; /* Đẩy nội dung và nút ra 2 phía */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+    </style>
+    <script>// Lắng nghe tất cả các nút có class 'btn-toggle-password'
+        document.querySelectorAll('.btn-toggle-password').forEach(button => {
+
+            button.addEventListener('click', function () {
+                // Lấy <td> (ô) cha
+                var cell = this.closest('.password-cell');
+
+                // Tìm các thành phần bên trong ô đó
+                var hiddenSpan = cell.querySelector('.password-hidden');
+                var realSpan = cell.querySelector('.password-real');
+                var icon = this.querySelector('i');
+
+                // Kiểm tra xem mật khẩu thật đang bị ẩn hay hiện
+                if (realSpan.style.display === 'none') {
+                    // Nếu đang ẩn: Hiển thị mật khẩu thật, ẩn dấu '***'
+                    realSpan.style.display = 'inline';
+                    hiddenSpan.style.display = 'none';
+                    // Đổi icon thành "mắt-gạch"
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                } else {
+                    // Nếu đang hiện: Ẩn mật khẩu thật, hiện dấu '***'
+                    realSpan.style.display = 'none';
+                    hiddenSpan.style.display = 'inline';
+                    // Đổi icon về "mắt"
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                }
+            });
+
+        });</script>
+}

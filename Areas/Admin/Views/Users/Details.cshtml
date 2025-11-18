@@ -1,0 +1,38 @@
+﻿@model NgoPhucThinhMystore.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
+}
+
+<div class="card shadow-sm">
+
+    <div class="card-header">
+        <h5 class="mb-0">@ViewBag.Title: @Html.DisplayFor(model => model.Username)</h5>
+    </div>
+
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.Username)</p>
+            </dd>
+
+            <dt class="col-sm-3 col-form-label fw-bold">
+                @Html.DisplayNameFor(model => model.UserRole)
+            </dt>
+            <dd class="col-sm-9">
+                <p class="form-control-plaintext">@Html.DisplayFor(model => model.UserRole)</p>
+            </dd>
+
+        </dl>
+
+    </div> <div class="card-footer bg-light">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.Username }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    </div>
+</div>

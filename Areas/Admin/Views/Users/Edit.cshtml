@@ -1,0 +1,59 @@
+﻿@model NgoPhucThinhMystore.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h5 class="mb-0">@ViewBag.Title: @Model.Username</h5>
+    </div>
+
+    <div class="card-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+            @Html.HiddenFor(model => model.Username)
+
+            <div class="row mb-3">
+                @Html.LabelFor(model => model.Username, "Tên đăng nhập", htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control-plaintext", @readonly = "readonly" } })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                @Html.LabelFor(model => model.Password, "Mật khẩu mới", htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                <div class="col-sm-10">
+                    @Html.PasswordFor(model => model.Password, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Để trống nếu không muốn đổi mật khẩu",
+                        value = "" // QUAN TRỌNG: Luôn để rỗng
+                    })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                @Html.LabelFor(model => model.UserRole, "Quyền", htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.UserRole, new { htmlAttributes = new { @class = "form-control-plaintext", @readonly = "readonly" } })
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                    <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                    @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-secondary ms-2" })
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

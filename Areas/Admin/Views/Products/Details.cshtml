@@ -4,7 +4,14 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/Adminlayout.cshtml";
 }
-
+<head>
+    <style>
+        img {
+            height: 250px;
+            max-width: 250px;
+        }
+    </style>
+</head>
 <h2 class="bg-success">Chi tiết Sản Phẩm</h2>
 
 @Html.Partial("PVProductInfo", Model)
